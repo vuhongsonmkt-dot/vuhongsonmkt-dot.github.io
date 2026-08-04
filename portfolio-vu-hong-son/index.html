@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio của Vũ Hồng Sơn — Digital Marketing Full-stack, tập trung vào chiến lược, nội dung, SEO, quảng cáo hiệu suất và tăng trưởng đa kênh.">
+  <meta name="theme-color" content="#050914">
+  <meta property="og:title" content="Vũ Hồng Sơn — Digital Marketing Full-stack">
+  <meta property="og:description" content="Chiến lược rõ ràng. Dữ liệu đúng trọng tâm. Tăng trưởng có thể đo lường.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.vuhongsonmkt.site">
+  <title>Vũ Hồng Sơn — Digital Marketing Full-stack</title>
+  <style>
+    :root {
+      --bg: #050914;
+      --bg-soft: #091120;
+      --card: rgba(13, 25, 47, 0.72);
+      --line: rgba(147, 173, 222, 0.16);
+      --text: #f5f8ff;
+      --muted: #9baac4;
+      --blue: #2478ff;
+      --blue-light: #6ca8ff;
+      --cyan: #54d5ff;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 12%, rgba(36, 120, 255, 0.18), transparent 26rem),
+        radial-gradient(circle at 10% 58%, rgba(84, 213, 255, 0.08), transparent 24rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 999;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: white;
+      color: #050914;
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: 200ms ease;
+    }
+    .site-header.scrolled {
+      background: rgba(5, 9, 20, 0.82);
+      border-color: var(--line);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(108, 168, 255, 0.45);
+      border-radius: 11px;
+      background: linear-gradient(145deg, rgba(36,120,255,.28), rgba(84,213,255,.06));
+      color: var(--blue-light);
+      box-shadow: 0 0 28px rgba(36, 120, 255, 0.18);
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: 0.94rem; }
+    .nav-links a { transition: color 160ms ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .nav-cta {
+      padding: 10px 16px;
+      border: 1px solid rgba(108, 168, 255, 0.4);
+      border-radius: 999px;
+      color: var(--blue-light) !important;
+      background: rgba(36, 120, 255, 0.08);
+    }
+    .menu-button {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--card);
+      cursor: pointer;
+    }
+
+    .hero { min-height: 100vh; display: grid; align-items: center; padding: 126px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); align-items: center; gap: 72px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: var(--blue-light);
+      font-size: 0.83rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--blue); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 850px;
+      margin-bottom: 26px;
+      font-size: clamp(3.1rem, 7.2vw, 6.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+    }
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(100deg, #ffffff 8%, #79acff 58%, #4ad6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    .hero-copy { max-width: 660px; margin-bottom: 34px; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.16rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      font-weight: 750;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--blue); box-shadow: 0 16px 40px rgba(36, 120, 255, 0.28); }
+    .button-primary:hover { background: #3585ff; }
+    .button-secondary { border-color: var(--line); background: rgba(255, 255, 255, 0.025); color: var(--muted); }
+    .button-secondary:hover { border-color: rgba(108, 168, 255, .45); color: var(--text); }
+
+    .orbit-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(36,120,255,.18), rgba(5,9,20,.04) 60%);
+      box-shadow: var(--shadow), inset 0 0 80px rgba(36,120,255,.08);
+    }
+    .orbit-card::before, .orbit-card::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(108, 168, 255, .16);
+      border-radius: 50%;
+    }
+    .orbit-card::before { inset: 13%; }
+    .orbit-card::after { inset: 28%; }
+    .initials {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      text-shadow: 0 0 34px rgba(84, 213, 255, .35);
+    }
+    .orbit-label {
+      position: absolute;
+      z-index: 3;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 9, 20, .88);
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+    }
+    .orbit-label:nth-of-type(1) { top: 14%; right: -3%; }
+    .orbit-label:nth-of-type(2) { bottom: 15%; right: 2%; }
+    .orbit-label:nth-of-type(3) { bottom: 20%; left: -4%; }
+    .orbit-label:nth-of-type(4) { top: 18%; left: 0; }
+
+    section { padding: 110px 0; }
+    .section-head { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: end; margin-bottom: 48px; }
+    .section-index { color: var(--blue-light); font: 800 .82rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
+    h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.05; letter-spacing: -0.055em; }
+    .section-intro { max-width: 610px; margin: 20px 0 0; color: var(--muted); }
+
+    .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(13,25,47,.78), rgba(7,14,28,.58));
+      box-shadow: var(--shadow);
+    }
+    .about-copy { padding: clamp(28px, 5vw, 54px); }
+    .about-copy p { color: var(--muted); font-size: 1.05rem; }
+    .about-copy strong { color: var(--text); }
+    .stack { padding: 28px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .stack-item {
+      min-height: 112px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.02);
+    }
+    .stack-number { display: block; margin-bottom: 20px; color: var(--blue-light); font: 700 .72rem/1 ui-monospace, monospace; }
+    .stack-item b { display: block; font-size: .96rem; }
+    .stack-item small { color: var(--muted); }
+
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .project-card {
+      min-height: 390px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(165deg, rgba(15,31,60,.78), rgba(6,11,23,.86));
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+    .project-card:hover { transform: translateY(-6px); border-color: rgba(108,168,255,.44); }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .project-no { color: var(--blue-light); font: 800 .82rem/1 ui-monospace, monospace; }
+    .project-arrow { font-size: 1.35rem; color: var(--muted); }
+    .project-visual {
+      height: 120px;
+      margin: 28px 0;
+      display: grid;
+      align-items: end;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(36,120,255,.06);
+    }
+    .project-visual i { display: block; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, var(--cyan), var(--blue)); opacity: .78; }
+    .project-visual i:nth-child(1) { height: 30%; }
+    .project-visual i:nth-child(2) { height: 48%; }
+    .project-visual i:nth-child(3) { height: 40%; }
+    .project-visual i:nth-child(4) { height: 68%; }
+    .project-visual i:nth-child(5) { height: 78%; }
+    .project-visual i:nth-child(6) { height: 100%; }
+    .project-card:nth-child(2) .project-visual i:nth-child(odd) { background: linear-gradient(180deg, #7da9ff, #3855ff); }
+    .project-card:nth-child(3) .project-visual i { border-radius: 50%; aspect-ratio: 1; height: auto; align-self: center; }
+    .project-card h3 { margin-bottom: 12px; font-size: 1.28rem; letter-spacing: -.025em; }
+    .project-card p { color: var(--muted); font-size: .94rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 16px; }
+    .tag { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .72rem; }
+
+    .experience-list { border-top: 1px solid var(--line); }
+    .experience-item {
+      display: grid;
+      grid-template-columns: 160px 1fr 1fr;
+      gap: 36px;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .experience-item > span { color: var(--blue-light); font: 700 .78rem/1.4 ui-monospace, monospace; }
+    .experience-item h3 { margin: 0; font-size: 1.18rem; }
+    .experience-item p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    .contact-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(34px, 7vw, 76px);
+      border: 1px solid rgba(108,168,255,.27);
+      border-radius: 32px;
+      background: linear-gradient(125deg, rgba(36,120,255,.18), rgba(8,16,33,.86) 56%);
+      box-shadow: var(--shadow);
+    }
+    .contact-card::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -160px;
+      bottom: -220px;
+      border: 54px solid rgba(84,213,255,.08);
+      border-radius: 50%;
+    }
+    .contact-card h2 { max-width: 780px; margin-bottom: 22px; }
+    .contact-card p { max-width: 650px; color: var(--muted); }
+    .contact-links { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+
+    footer { padding: 30px 0 38px; color: var(--muted); font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 26px; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 48px; }
+      .orbit-card { width: min(460px, 90%); margin: 0 auto; }
+      .projects { grid-template-columns: 1fr; }
+      .project-card { min-height: 350px; }
+      .section-head { grid-template-columns: 1fr; gap: 18px; }
+      .experience-item { grid-template-columns: 110px 1fr; }
+      .experience-item p { grid-column: 2; }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .menu-button { display: grid; place-items: center; }
+      .nav-links {
+        position: fixed;
+        top: 68px;
+        left: 14px;
+        right: 14px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(5,9,20,.97);
+        box-shadow: var(--shadow);
+        transform: translateY(-16px);
+        opacity: 0;
+        pointer-events: none;
+        transition: 180ms ease;
+      }
+      .nav-links.open { transform: none; opacity: 1; pointer-events: auto; }
+      .nav-links a { padding: 10px 12px; }
+      .hero { min-height: auto; padding-top: 132px; }
+      .hero-actions .button { width: 100%; }
+      .stack { grid-template-columns: 1fr; }
+      .experience-item { grid-template-columns: 1fr; gap: 12px; }
+      .experience-item p { grid-column: auto; }
+      .footer-inner { flex-direction: column; }
+      section { padding: 84px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Đi đến nội dung chính</a>
+
+  <header class="site-header" id="header">
+    <nav class="nav container" aria-label="Điều hướng chính">
+      <a class="brand" href="#top" aria-label="Trang đầu của Vũ Hồng Sơn">
+        <span class="brand-mark">S</span>
+        <span>Vũ Hồng Sơn</span>
+      </a>
+      <button class="menu-button" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">Giới thiệu</a>
+        <a href="#projects">Dự án</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a class="nav-cta" href="#contact">Liên hệ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Digital Marketing Full-stack</div>
+          <h1>Vũ Hồng Sơn.<br><span class="gradient-text">Tăng trưởng bằng dữ liệu.</span></h1>
+          <p class="hero-copy">Tôi xây dựng hệ thống marketing xuyên suốt — từ chiến lược, nội dung và SEO đến quảng cáo hiệu suất, tối ưu chuyển đổi và tăng trưởng đa kênh.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Khám phá dự án <span aria-hidden="true">↘</span></a>
+            <a class="button button-secondary" href="#contact">Bắt đầu trao đổi</a>
+          </div>
+        </div>
+        <div class="orbit-card" aria-label="Các năng lực Digital Marketing của Vũ Hồng Sơn">
+          <div class="initials">VHS</div>
+          <span class="orbit-label">Strategy</span>
+          <span class="orbit-label">Performance</span>
+          <span class="orbit-label">SEO & Content</span>
+          <span class="orbit-label">Analytics</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-index">01 / GIỚI THIỆU</span>
+          <div>
+            <h2>Từ một ý tưởng<br>đến một hệ thống tăng trưởng.</h2>
+            <p class="section-intro">Tôi kết nối tư duy chiến lược với khả năng triển khai thực tế để mỗi hoạt động marketing đều có mục tiêu, dữ liệu và hướng tối ưu rõ ràng.</p>
+          </div>
+        </div>
+        <div class="about-grid">
+          <article class="panel about-copy reveal">
+            <p>Xin chào, tôi là <strong>Vũ Hồng Sơn</strong> — một Digital Marketer theo hướng full-stack.</p>
+            <p>Tôi quan tâm đến toàn bộ hành trình khách hàng: hiểu đúng nhu cầu, xây dựng thông điệp, lựa chọn kênh, tạo nội dung, thu hút lưu lượng, cải thiện chuyển đổi và đo lường hiệu quả.</p>
+            <p>Mục tiêu của tôi không chỉ là tạo ra lượt hiển thị, mà là biến marketing thành một hệ thống <strong>có thể vận hành, kiểm chứng và phát triển bền vững</strong>.</p>
+          </article>
+          <div class="panel stack reveal" aria-label="Năng lực chuyên môn">
+            <div class="stack-item"><span class="stack-number">01</span><b>Strategy</b><small>Research & Planning</small></div>
+            <div class="stack-item"><span class="stack-number">02</span><b>SEO & Content</b><small>Organic Growth</small></div>
+            <div class="stack-item"><span class="stack-number">03</span><b>Paid Media</b><small>Performance Ads</small></div>
+            <div class="stack-item"><span class="stack-number">04</span><b>Analytics</b><small>Data & Optimization</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-index">02 / DỰ ÁN</span>
+          <div>
+            <h2>Những bài toán<br>tôi tập trung giải quyết.</h2>
+            <p class="section-intro">Ba nhóm dự án tiêu biểu trong hành trình xây dựng thương hiệu, thu hút khách hàng và tối ưu hiệu quả marketing.</p>
+          </div>
+        </div>
+        <div class="projects">
+          <article class="project-card reveal">
+            <div class="project-top"><span class="project-no">PROJECT 01</span><span class="project-arrow">↗</span></div>
+            <div class="project-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>SEO & Content Growth</h3>
+            <p>Xây dựng cụm nội dung theo hành trình tìm kiếm, tối ưu nền tảng website và phát triển nguồn truy cập tự nhiên dài hạn.</p>
+            <div class="tags"><span class="tag">SEO</span><span class="tag">Content</span><span class="tag">Website</span></div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><span class="project-no">PROJECT 02</span><span class="project-arrow">↗</span></div>
+            <div class="project-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Performance Marketing</h3>
+            <p>Thiết kế chiến dịch quảng cáo theo mục tiêu, theo dõi phễu chuyển đổi và tối ưu ngân sách dựa trên dữ liệu thực tế.</p>
+            <div class="tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">CRO</span></div>
+          </article>
+          <article class="project-card reveal">
+            <div class="project-top"><span class="project-no">PROJECT 03</span><span class="project-arrow">↗</span></div>
+            <div class="project-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Omnichannel System</h3>
+            <p>Kết nối nội dung, mạng xã hội, quảng cáo và dữ liệu khách hàng thành một trải nghiệm nhất quán trên nhiều điểm chạm.</p>
+            <div class="tags"><span class="tag">Social</span><span class="tag">CRM</span><span class="tag">Automation</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-index">03 / KINH NGHIỆM</span>
+          <div>
+            <h2>Một quy trình.<br>Nhiều điểm chạm.</h2>
+            <p class="section-intro">Kinh nghiệm được xây dựng xuyên suốt ba lớp quan trọng của một hệ thống Digital Marketing full-stack.</p>
+          </div>
+        </div>
+        <div class="experience-list">
+          <article class="experience-item reveal">
+            <span>STRATEGY / 01</span>
+            <h3>Nghiên cứu & hoạch định</h3>
+            <p>Phân tích thị trường, chân dung khách hàng, hành trình ra quyết định và xác định ưu tiên tăng trưởng.</p>
+          </article>
+          <article class="experience-item reveal">
+            <span>EXECUTION / 02</span>
+            <h3>Triển khai đa kênh</h3>
+            <p>Phối hợp SEO, content, social media, paid media và landing page trong một thông điệp nhất quán.</p>
+          </article>
+          <article class="experience-item reveal">
+            <span>OPTIMIZE / 03</span>
+            <h3>Đo lường & tối ưu</h3>
+            <p>Theo dõi các chỉ số quan trọng, tìm điểm nghẽn trong phễu và liên tục thử nghiệm để cải thiện hiệu quả.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <span class="section-index">04 / LIÊN HỆ</span>
+          <h2>Cùng biến một mục tiêu kinh doanh thành kế hoạch tăng trưởng rõ ràng.</h2>
+          <p>Bạn đang có một dự án, một thương hiệu hoặc một bài toán marketing cần góc nhìn mới? Hãy bắt đầu một cuộc trò chuyện.</p>
+          <div class="contact-links">
+            <a class="button button-primary" href="https://github.com/vuhongsonmkt-dot" target="_blank" rel="noreferrer">Kết nối qua GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="https://www.vuhongsonmkt.site">vuhongsonmkt.site</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Vũ Hồng Sơn.</span>
+      <span>Digital Marketing Full-stack · Việt Nam</span>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('#header');
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('#nav-links');
+
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 20);
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? '×' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '☰';
+    }));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
