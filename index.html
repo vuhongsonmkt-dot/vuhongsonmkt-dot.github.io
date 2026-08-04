@@ -1,28 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio của Vũ Hồng Sơn — Digital Marketing Full-stack, tập trung vào chiến lược, nội dung, SEO, quảng cáo hiệu suất và tăng trưởng đa kênh.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio Vũ Hồng Sơn — Full-stack Marketing Leader: chiến lược, Performance Marketing, SEO, Website, Content, E-commerce, Data và Leadership.">
   <meta name="theme-color" content="#050914">
-  <meta property="og:title" content="Vũ Hồng Sơn — Digital Marketing Full-stack">
-  <meta property="og:description" content="Chiến lược rõ ràng. Dữ liệu đúng trọng tâm. Tăng trưởng có thể đo lường.">
+  <meta property="og:title" content="Vũ Hồng Sơn — Full-stack Marketing Leader">
+  <meta property="og:description" content="Từ chiến lược đến thực thi. Từ con số 0 đến một hệ thống marketing vận hành trơn tru.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.vuhongsonmkt.site">
-  <title>Vũ Hồng Sơn — Digital Marketing Full-stack</title>
+  <meta property="og:image" content="https://www.vuhongsonmkt.site/assets/vu-hong-son-portrait.png">
+  <title>Vũ Hồng Sơn — Full-stack Marketing Leader</title>
   <style>
     :root {
       --bg: #050914;
-      --bg-soft: #091120;
-      --card: rgba(13, 25, 47, 0.72);
-      --line: rgba(147, 173, 222, 0.16);
+      --surface: #091222;
+      --surface-2: #0d1930;
       --text: #f5f8ff;
-      --muted: #9baac4;
-      --blue: #2478ff;
-      --blue-light: #6ca8ff;
-      --cyan: #54d5ff;
+      --muted: #9daec9;
+      --line: rgba(151, 178, 225, .16);
+      --blue: #2b7fff;
+      --blue-2: #6aa7ff;
+      --cyan: #54d8ff;
+      --gold: #ffc515;
       --radius: 24px;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+      --shadow: 0 28px 80px rgba(0, 0, 0, .32);
+      --container: 1180px;
     }
 
     * { box-sizing: border-box; }
@@ -31,349 +34,211 @@
       margin: 0;
       color: var(--text);
       background:
-        radial-gradient(circle at 82% 12%, rgba(36, 120, 255, 0.18), transparent 26rem),
-        radial-gradient(circle at 10% 58%, rgba(84, 213, 255, 0.08), transparent 24rem),
+        radial-gradient(circle at 84% 4%, rgba(43,127,255,.16), transparent 30rem),
+        radial-gradient(circle at 8% 50%, rgba(84,216,255,.06), transparent 28rem),
         var(--bg);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
       line-height: 1.65;
       overflow-x: hidden;
     }
-
+    img { max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; }
-    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-
-    .skip-link {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      z-index: 999;
-      padding: 10px 16px;
-      border-radius: 10px;
-      background: white;
-      color: #050914;
-      transform: translateY(-150%);
-    }
-    .skip-link:focus { transform: translateY(0); }
-
-    .site-header {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 100;
-      border-bottom: 1px solid transparent;
-      transition: 200ms ease;
-    }
-    .site-header.scrolled {
-      background: rgba(5, 9, 20, 0.82);
-      border-color: var(--line);
-      backdrop-filter: blur(18px);
-    }
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.03em; }
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(108, 168, 255, 0.45);
-      border-radius: 11px;
-      background: linear-gradient(145deg, rgba(36,120,255,.28), rgba(84,213,255,.06));
-      color: var(--blue-light);
-      box-shadow: 0 0 28px rgba(36, 120, 255, 0.18);
-    }
-    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: 0.94rem; }
-    .nav-links a { transition: color 160ms ease; }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
-    .nav-cta {
-      padding: 10px 16px;
-      border: 1px solid rgba(108, 168, 255, 0.4);
-      border-radius: 999px;
-      color: var(--blue-light) !important;
-      background: rgba(36, 120, 255, 0.08);
-    }
-    .menu-button {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      color: var(--text);
-      background: var(--card);
-      cursor: pointer;
-    }
-
-    .hero { min-height: 100vh; display: grid; align-items: center; padding: 126px 0 72px; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr); align-items: center; gap: 72px; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-      color: var(--blue-light);
-      font-size: 0.83rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--blue); }
     h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      max-width: 850px;
-      margin-bottom: 26px;
-      font-size: clamp(3.1rem, 7.2vw, 6.7rem);
-      line-height: 0.98;
-      letter-spacing: -0.065em;
-    }
-    .gradient-text {
-      color: transparent;
-      background: linear-gradient(100deg, #ffffff 8%, #79acff 58%, #4ad6ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-    .hero-copy { max-width: 660px; margin-bottom: 34px; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.16rem); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 22px;
-      border: 1px solid transparent;
-      border-radius: 14px;
-      font-weight: 750;
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
+    h1, h2, h3 { text-wrap: balance; }
+    .container { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
+    .skip { position: fixed; left: 12px; top: 12px; z-index: 999; padding: 10px 14px; background: white; color: #050914; border-radius: 10px; transform: translateY(-150%); }
+    .skip:focus { transform: none; }
+
+    .header { position: fixed; inset: 0 0 auto; z-index: 100; border-bottom: 1px solid transparent; transition: .2s ease; }
+    .header.scrolled { background: rgba(5,9,20,.86); border-color: var(--line); backdrop-filter: blur(18px); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: -.03em; white-space: nowrap; }
+    .brand img { width: 42px; height: 42px; object-fit: cover; border: 1px solid rgba(106,167,255,.35); border-radius: 13px; }
+    .nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .91rem; }
+    .nav-links a { transition: color .16s ease; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: white; }
+    .nav-links .contact-link { padding: 10px 16px; color: var(--blue-2); border: 1px solid rgba(106,167,255,.38); border-radius: 999px; background: rgba(43,127,255,.07); }
+    .menu { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: white; cursor: pointer; }
+
+    .hero { min-height: 100svh; display: grid; align-items: center; padding: 126px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); align-items: center; gap: clamp(44px, 6vw, 84px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; color: var(--blue-2); font-size: .78rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--blue); }
+    h1 { max-width: 760px; margin-bottom: 26px; font-size: clamp(3.2rem, 6.2vw, 5.75rem); line-height: .98; letter-spacing: -.065em; }
+    .gradient { color: transparent; background: linear-gradient(100deg, #f9fbff 4%, #82b2ff 56%, #50d9ff); -webkit-background-clip: text; background-clip: text; }
+    .hero-copy { max-width: 700px; margin-bottom: 32px; color: var(--muted); font-size: clamp(1rem, 1.3vw, 1.13rem); }
+    .hero-copy strong { color: white; font-weight: 720; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 21px; border: 1px solid transparent; border-radius: 14px; font-weight: 780; transition: .16s ease; }
     .button:hover { transform: translateY(-2px); }
-    .button-primary { background: var(--blue); box-shadow: 0 16px 40px rgba(36, 120, 255, 0.28); }
-    .button-primary:hover { background: #3585ff; }
-    .button-secondary { border-color: var(--line); background: rgba(255, 255, 255, 0.025); color: var(--muted); }
-    .button-secondary:hover { border-color: rgba(108, 168, 255, .45); color: var(--text); }
+    .button.primary { background: var(--blue); box-shadow: 0 16px 42px rgba(43,127,255,.28); }
+    .button.secondary { color: #c4d0e2; border-color: var(--line); background: rgba(255,255,255,.025); }
+    .portrait { position: relative; aspect-ratio: 4/5; overflow: hidden; border: 1px solid var(--line); border-radius: 32px; background: var(--surface); box-shadow: var(--shadow); }
+    .portrait::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(180deg, transparent, rgba(5,9,20,.94)); pointer-events: none; }
+    .portrait-photo { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 25%; filter: saturate(.86) contrast(1.03); }
+    .portrait-info { position: absolute; z-index: 2; left: 24px; right: 24px; bottom: 22px; display: flex; align-items: end; justify-content: space-between; gap: 18px; }
+    .portrait-info strong { display: block; font-size: 1.02rem; }
+    .portrait-info small { display: block; color: #b7c6de; }
+    .status { display: inline-flex; align-items: center; gap: 7px; color: #dbe7f8; font-size: .73rem; white-space: nowrap; }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #46df83; box-shadow: 0 0 14px rgba(70,223,131,.6); }
+    .personal-mark { position: absolute; top: 18px; right: 18px; z-index: 2; width: 52px; height: 52px; object-fit: cover; border: 1px solid rgba(106,167,255,.35); border-radius: 15px; box-shadow: 0 14px 32px rgba(0,0,0,.24); }
 
-    .orbit-card {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(36,120,255,.18), rgba(5,9,20,.04) 60%);
-      box-shadow: var(--shadow), inset 0 0 80px rgba(36,120,255,.08);
-    }
-    .orbit-card::before, .orbit-card::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(108, 168, 255, .16);
-      border-radius: 50%;
-    }
-    .orbit-card::before { inset: 13%; }
-    .orbit-card::after { inset: 28%; }
-    .initials {
-      position: relative;
-      z-index: 2;
-      font-size: clamp(3rem, 7vw, 5.6rem);
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      text-shadow: 0 0 34px rgba(84, 213, 255, .35);
-    }
-    .orbit-label {
-      position: absolute;
-      z-index: 3;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(5, 9, 20, .88);
-      color: var(--muted);
-      font-size: .76rem;
-      font-weight: 700;
-      backdrop-filter: blur(10px);
-    }
-    .orbit-label:nth-of-type(1) { top: 14%; right: -3%; }
-    .orbit-label:nth-of-type(2) { bottom: 15%; right: 2%; }
-    .orbit-label:nth-of-type(3) { bottom: 20%; left: -4%; }
-    .orbit-label:nth-of-type(4) { top: 18%; left: 0; }
+    .proof-bar { padding: 0 0 30px; }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 22px; background: rgba(9,18,34,.74); box-shadow: var(--shadow); }
+    .proof-item { padding: 24px; border-right: 1px solid var(--line); }
+    .proof-item:last-child { border-right: 0; }
+    .proof-item b { display: block; margin-bottom: 3px; font-size: clamp(1.35rem, 2.4vw, 1.9rem); letter-spacing: -.04em; }
+    .proof-item small { color: var(--muted); }
 
-    section { padding: 110px 0; }
-    .section-head { display: grid; grid-template-columns: .75fr 1.25fr; gap: 60px; align-items: end; margin-bottom: 48px; }
-    .section-index { color: var(--blue-light); font: 800 .82rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
-    h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.05; letter-spacing: -0.055em; }
-    .section-intro { max-width: 610px; margin: 20px 0 0; color: var(--muted); }
+    section { padding: clamp(82px, 9vw, 120px) 0; }
+    .section-head { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 48px; align-items: start; margin-bottom: 50px; }
+    .index { color: var(--blue-2); font: 850 .76rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
+    h2 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.35rem, 4.7vw, 4.25rem); line-height: 1.04; letter-spacing: -.055em; }
+    .section-copy { max-width: 760px; margin: 20px 0 0; color: var(--muted); font-size: 1rem; }
 
-    .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; }
-    .panel {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(145deg, rgba(13,25,47,.78), rgba(7,14,28,.58));
-      box-shadow: var(--shadow);
-    }
-    .about-copy { padding: clamp(28px, 5vw, 54px); }
-    .about-copy p { color: var(--muted); font-size: 1.05rem; }
-    .about-copy strong { color: var(--text); }
-    .stack { padding: 28px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .stack-item {
-      min-height: 112px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      background: rgba(255,255,255,.02);
-    }
-    .stack-number { display: block; margin-bottom: 20px; color: var(--blue-light); font: 700 .72rem/1 ui-monospace, monospace; }
-    .stack-item b { display: block; font-size: .96rem; }
-    .stack-item small { color: var(--muted); }
+    .positioning { display: grid; grid-template-columns: .95fr 1.05fr; gap: 22px; }
+    .card { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(13,25,48,.82), rgba(7,14,28,.68)); box-shadow: var(--shadow); }
+    .position-copy { padding: clamp(28px, 4vw, 48px); }
+    .position-copy h3 { margin-bottom: 18px; font-size: clamp(1.55rem, 2.6vw, 2.25rem); line-height: 1.16; letter-spacing: -.04em; }
+    .position-copy p { color: var(--muted); }
+    .position-copy strong { color: white; }
+    .principles { padding: 22px; display: grid; gap: 12px; }
+    .principle { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; padding: 20px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.02); }
+    .principle span { color: var(--cyan); font: 850 .72rem/1.5 ui-monospace, monospace; }
+    .principle b { display: block; margin-bottom: 5px; }
+    .principle p { margin: 0; color: var(--muted); font-size: .88rem; }
 
-    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .project-card {
-      min-height: 390px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(165deg, rgba(15,31,60,.78), rgba(6,11,23,.86));
-      transition: transform 200ms ease, border-color 200ms ease;
-    }
-    .project-card:hover { transform: translateY(-6px); border-color: rgba(108,168,255,.44); }
-    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .project-no { color: var(--blue-light); font: 800 .82rem/1 ui-monospace, monospace; }
-    .project-arrow { font-size: 1.35rem; color: var(--muted); }
-    .project-visual {
-      height: 120px;
-      margin: 28px 0;
-      display: grid;
-      align-items: end;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(36,120,255,.06);
-    }
-    .project-visual i { display: block; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, var(--cyan), var(--blue)); opacity: .78; }
-    .project-visual i:nth-child(1) { height: 30%; }
-    .project-visual i:nth-child(2) { height: 48%; }
-    .project-visual i:nth-child(3) { height: 40%; }
-    .project-visual i:nth-child(4) { height: 68%; }
-    .project-visual i:nth-child(5) { height: 78%; }
-    .project-visual i:nth-child(6) { height: 100%; }
-    .project-card:nth-child(2) .project-visual i:nth-child(odd) { background: linear-gradient(180deg, #7da9ff, #3855ff); }
-    .project-card:nth-child(3) .project-visual i { border-radius: 50%; aspect-ratio: 1; height: auto; align-self: center; }
-    .project-card h3 { margin-bottom: 12px; font-size: 1.28rem; letter-spacing: -.025em; }
-    .project-card p { color: var(--muted); font-size: .94rem; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 16px; }
-    .tag { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .72rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card { min-height: 300px; padding: 28px; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(150deg, rgba(13,25,48,.76), rgba(7,14,28,.68)); transition: .2s ease; }
+    .skill-card:hover { transform: translateY(-4px); border-color: rgba(106,167,255,.4); }
+    .skill-code { color: var(--blue-2); font: 850 .72rem/1 ui-monospace, monospace; letter-spacing: .1em; }
+    .skill-card h3 { margin: 22px 0 11px; font-size: 1.28rem; letter-spacing: -.03em; }
+    .skill-card > p { color: var(--muted); font-size: .9rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 18px; }
+    .chip { padding: 6px 9px; border: 1px solid var(--line); border-radius: 999px; color: #c0cce0; font-size: .69rem; }
 
-    .experience-list { border-top: 1px solid var(--line); }
-    .experience-item {
-      display: grid;
-      grid-template-columns: 160px 1fr 1fr;
-      gap: 36px;
-      padding: 34px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .experience-item > span { color: var(--blue-light); font: 700 .78rem/1.4 ui-monospace, monospace; }
-    .experience-item h3 { margin: 0; font-size: 1.18rem; }
-    .experience-item p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .case { overflow: hidden; border: 1px solid rgba(255,197,21,.24); border-radius: 30px; background: linear-gradient(135deg, rgba(255,197,21,.07), rgba(9,18,34,.9) 32%, rgba(7,14,28,.94)); box-shadow: var(--shadow); }
+    .case-top { padding: clamp(28px, 5vw, 54px); display: grid; grid-template-columns: 310px minmax(0, 1fr); gap: 54px; align-items: center; }
+    .company-block { min-width: 0; }
+    .company-logo { min-height: 136px; display: grid; place-items: center; padding: 22px 26px; border: 1px solid rgba(255,255,255,.7); border-radius: 22px; background: #edf1f4; }
+    .company-logo img { width: 100%; max-width: 310px; height: auto; display: block; object-fit: contain; }
+    .role { display: block; margin-top: 17px; color: var(--gold); font: 850 .75rem/1.6 ui-monospace, monospace; letter-spacing: .06em; }
+    .case-title h3 { margin-bottom: 18px; font-size: clamp(2rem, 4.2vw, 3.6rem); line-height: 1.04; letter-spacing: -.055em; }
+    .case-title p { margin: 0; color: var(--muted); }
+    .case-body { padding: 0 clamp(28px, 5vw, 54px) clamp(32px, 5vw, 54px); }
+    .case-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; margin-bottom: 28px; }
+    .case-metric { min-height: 126px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: 17px; background: rgba(5,9,20,.52); }
+    .case-metric b { font-size: clamp(1.35rem, 2.4vw, 2rem); letter-spacing: -.04em; }
+    .case-metric small { color: var(--muted); line-height: 1.42; }
+    .journey { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; margin-bottom: 30px; }
+    .journey-item { padding: 22px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255,255,255,.018); }
+    .journey-item span { display: block; margin-bottom: 14px; color: var(--cyan); font: 850 .72rem/1 ui-monospace, monospace; }
+    .journey-item b { display: block; margin-bottom: 7px; }
+    .journey-item p { margin: 0; color: var(--muted); font-size: .83rem; }
+    .evidence { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .evidence a { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: rgba(5,9,20,.58); }
+    .evidence img { width: 100%; aspect-ratio: 16/8.5; display: block; object-fit: cover; object-position: top; }
+    .evidence-caption { padding: 15px 17px; }
+    .evidence-caption b { display: block; font-size: .9rem; }
+    .evidence-caption small { color: var(--muted); }
+    .channels { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+    .channels a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: #c3d0e4; font-size: .75rem; transition: .16s ease; }
+    .channels a:hover { color: white; border-color: rgba(106,167,255,.45); transform: translateY(-2px); }
+    .confidential { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: #7485a1; font-size: .72rem; }
 
-    .contact-card {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(34px, 7vw, 76px);
-      border: 1px solid rgba(108,168,255,.27);
-      border-radius: 32px;
-      background: linear-gradient(125deg, rgba(36,120,255,.18), rgba(8,16,33,.86) 56%);
-      box-shadow: var(--shadow);
-    }
-    .contact-card::after {
-      content: "";
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      right: -160px;
-      bottom: -220px;
-      border: 54px solid rgba(84,213,255,.08);
-      border-radius: 50%;
-    }
-    .contact-card h2 { max-width: 780px; margin-bottom: 22px; }
-    .contact-card p { max-width: 650px; color: var(--muted); }
-    .contact-links { position: relative; z-index: 2; display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .career-head { display: block; max-width: 880px; }
+    .career-head .index { display: block; margin-bottom: 22px; }
+    .timeline { margin-top: 50px; border-top: 1px solid var(--line); }
+    .job { display: grid; grid-template-columns: 145px minmax(230px, .8fr) minmax(0, 1.2fr); gap: 34px; padding: 31px 0; border-bottom: 1px solid var(--line); }
+    .job time { color: var(--blue-2); font: 800 .75rem/1.5 ui-monospace, monospace; }
+    .job h3 { margin: 0; font-size: 1.06rem; letter-spacing: -.02em; }
+    .job p { margin: 0; color: var(--muted); font-size: .9rem; }
 
-    footer { padding: 30px 0 38px; color: var(--muted); font-size: .82rem; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 26px; }
+    .contact { padding-top: 72px; }
+    .contact-card { padding: clamp(34px, 6vw, 72px); border: 1px solid rgba(106,167,255,.28); border-radius: 30px; background: linear-gradient(125deg, rgba(43,127,255,.17), rgba(9,18,34,.9) 56%); box-shadow: var(--shadow); }
+    .contact-card h2 { max-width: 850px; margin-bottom: 20px; }
+    .contact-card p { max-width: 680px; color: var(--muted); }
+    .contact-card .actions { margin-top: 28px; }
+    footer { padding: 34px 0 42px; color: var(--muted); font-size: .8rem; }
+    .footer-inner { padding-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); }
+    .footer-brand { display: inline-flex; align-items: center; gap: 10px; }
+    .footer-brand img { width: 32px; height: 32px; object-fit: cover; border-radius: 9px; }
 
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    @media (max-width: 900px) {
-      .hero-grid, .about-grid { grid-template-columns: 1fr; }
-      .hero-grid { gap: 48px; }
-      .orbit-card { width: min(460px, 90%); margin: 0 auto; }
-      .projects { grid-template-columns: 1fr; }
-      .project-card { min-height: 350px; }
-      .section-head { grid-template-columns: 1fr; gap: 18px; }
-      .experience-item { grid-template-columns: 110px 1fr; }
-      .experience-item p { grid-column: 2; }
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr .8fr; gap: 40px; }
+      h1 { font-size: clamp(3rem, 6.8vw, 5rem); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .case-metrics, .journey { grid-template-columns: repeat(2, 1fr); }
+      .job { grid-template-columns: 120px 1fr; }
+      .job p { grid-column: 2; }
     }
 
-    @media (max-width: 720px) {
-      .container { width: min(100% - 28px, 1120px); }
-      .menu-button { display: grid; place-items: center; }
-      .nav-links {
-        position: fixed;
-        top: 68px;
-        left: 14px;
-        right: 14px;
-        padding: 20px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: rgba(5,9,20,.97);
-        box-shadow: var(--shadow);
-        transform: translateY(-16px);
-        opacity: 0;
-        pointer-events: none;
-        transition: 180ms ease;
-      }
-      .nav-links.open { transform: none; opacity: 1; pointer-events: auto; }
+    @media (max-width: 800px) {
+      .container { width: min(var(--container), calc(100% - 32px)); }
+      .menu { display: grid; place-items: center; }
+      .nav-links { position: fixed; top: 70px; left: 16px; right: 16px; padding: 16px; flex-direction: column; align-items: stretch; gap: 4px; border: 1px solid var(--line); border-radius: 18px; background: rgba(5,9,20,.98); box-shadow: var(--shadow); opacity: 0; transform: translateY(-12px); pointer-events: none; transition: .18s ease; }
+      .nav-links.open { opacity: 1; transform: none; pointer-events: auto; }
       .nav-links a { padding: 10px 12px; }
-      .hero { min-height: auto; padding-top: 132px; }
-      .hero-actions .button { width: 100%; }
-      .stack { grid-template-columns: 1fr; }
-      .experience-item { grid-template-columns: 1fr; gap: 12px; }
-      .experience-item p { grid-column: auto; }
-      .footer-inner { flex-direction: column; }
-      section { padding: 84px 0; }
+      .nav-links .contact-link { text-align: center; }
+      .hero { min-height: auto; padding-top: 120px; }
+      .hero-grid, .positioning, .case-top { grid-template-columns: 1fr; }
+      .portrait { width: min(460px, 100%); margin-inline: auto; }
+      .proof-grid { grid-template-columns: repeat(3, 1fr); }
+      .section-head { grid-template-columns: 1fr; gap: 16px; }
+      .case-top { gap: 28px; }
+      .company-block { max-width: 340px; }
+      .evidence { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 580px) {
+      body { font-size: 15px; }
+      .container { width: calc(100% - 24px); }
+      .brand span { font-size: .92rem; }
+      .hero { padding-top: 108px; }
+      h1 { font-size: clamp(2.72rem, 13vw, 4rem); }
+      h2 { font-size: clamp(2rem, 10vw, 3rem); }
+      .hero-copy { font-size: .98rem; }
+      .actions .button { width: 100%; }
+      .portrait-info { left: 18px; right: 18px; bottom: 18px; align-items: flex-start; flex-direction: column; gap: 8px; }
+      .status { white-space: normal; }
+      .proof-grid, .skills-grid, .case-metrics, .journey { grid-template-columns: 1fr; }
+      .proof-item { border-right: 0; border-bottom: 1px solid var(--line); }
+      .proof-item:last-child { border-bottom: 0; }
+      .skill-card { min-height: auto; }
+      .case-top, .case-body { padding-left: 20px; padding-right: 20px; }
+      .case-metric { min-height: 108px; }
+      .job { grid-template-columns: 1fr; gap: 10px; }
+      .job p { grid-column: auto; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Đi đến nội dung chính</a>
-
-  <header class="site-header" id="header">
+  <a class="skip" href="#main">Đi đến nội dung chính</a>
+  <header class="header" id="header">
     <nav class="nav container" aria-label="Điều hướng chính">
-      <a class="brand" href="#top" aria-label="Trang đầu của Vũ Hồng Sơn">
-        <span class="brand-mark">S</span>
-        <span>Vũ Hồng Sơn</span>
+      <a class="brand" href="#top" aria-label="Trang đầu Vũ Hồng Sơn">
+        <img src="assets/sudan-vu-logo.png" alt="Logo SuDan Vũ">
+        <span>Vũ Hồng Sơn · SuDan Vũ</span>
       </a>
-      <button class="menu-button" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <button class="menu" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
       <div class="nav-links" id="nav-links">
         <a href="#about">Giới thiệu</a>
-        <a href="#projects">Dự án</a>
-        <a href="#experience">Kinh nghiệm</a>
-        <a class="nav-cta" href="#contact">Liên hệ</a>
+        <a href="#skills">Năng lực</a>
+        <a href="#case-study">Case study</a>
+        <a href="#career">Kinh nghiệm</a>
+        <a class="contact-link" href="#contact">Liên hệ</a>
       </div>
     </nav>
   </header>
@@ -382,122 +247,146 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Digital Marketing Full-stack</div>
-          <h1>Vũ Hồng Sơn.<br><span class="gradient-text">Tăng trưởng bằng dữ liệu.</span></h1>
-          <p class="hero-copy">Tôi xây dựng hệ thống marketing xuyên suốt — từ chiến lược, nội dung và SEO đến quảng cáo hiệu suất, tối ưu chuyển đổi và tăng trưởng đa kênh.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">Khám phá dự án <span aria-hidden="true">↘</span></a>
-            <a class="button button-secondary" href="#contact">Bắt đầu trao đổi</a>
+          <div class="eyebrow">Full-stack Marketing Leader</div>
+          <h1>Vũ Hồng Sơn.<br><span class="gradient">Xây hệ thống tăng trưởng từ số 0.</span></h1>
+          <p class="hero-copy">Tôi kết hợp <strong>Strategy, Performance Marketing, SEO, Website, Content, E-commerce, Data và Leadership</strong> để biến một thương hiệu mới thành hệ thống marketing online có thể vận hành, đo lường và tối ưu.</p>
+          <div class="actions">
+            <a class="button primary" href="#case-study">Xem case study 3D CORETECH <span aria-hidden="true">↘</span></a>
+            <a class="button secondary" href="cv-vu-hong-son-marketing.pdf" download>Tải CV</a>
           </div>
         </div>
-        <div class="orbit-card" aria-label="Các năng lực Digital Marketing của Vũ Hồng Sơn">
-          <div class="initials">VHS</div>
-          <span class="orbit-label">Strategy</span>
-          <span class="orbit-label">Performance</span>
-          <span class="orbit-label">SEO & Content</span>
-          <span class="orbit-label">Analytics</span>
+        <div class="portrait" aria-label="Ảnh chân dung Vũ Hồng Sơn">
+          <img class="portrait-photo" src="assets/vu-hong-son-portrait.png" alt="Vũ Hồng Sơn — Full-stack Marketing Leader">
+          <img class="personal-mark" src="assets/sudan-vu-logo.png" alt="Logo SuDan Vũ">
+          <div class="portrait-info">
+            <div><strong>Vũ Hồng Sơn · SuDan Vũ</strong><small>Digital Marketing Full-stack</small></div>
+            <span class="status">Sẵn sàng kết nối</span>
+          </div>
         </div>
       </div>
     </section>
+
+    <div class="proof-bar">
+      <div class="container proof-grid reveal" aria-label="Kết quả nổi bật">
+        <div class="proof-item"><b>300+</b><small>từ khóa Top 20 Google</small></div>
+        <div class="proof-item"><b>1.000+</b><small>khách hàng liên hệ từ Ads</small></div>
+        <div class="proof-item"><b>12–16%</b><small>tỷ lệ chốt trung bình</small></div>
+      </div>
+    </div>
 
     <section id="about">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-index">01 / GIỚI THIỆU</span>
-          <div>
-            <h2>Từ một ý tưởng<br>đến một hệ thống tăng trưởng.</h2>
-            <p class="section-intro">Tôi kết nối tư duy chiến lược với khả năng triển khai thực tế để mỗi hoạt động marketing đều có mục tiêu, dữ liệu và hướng tối ưu rõ ràng.</p>
-          </div>
+          <span class="index">01 / ĐỊNH VỊ</span>
+          <div><h2>Không bị giới hạn bởi một kênh hay một công cụ.</h2><p class="section-copy">Tôi phát triển năng lực theo toàn bộ chuỗi giá trị marketing: hiểu bài toán kinh doanh, thiết kế chiến lược, xây nền tảng, tạo nhu cầu, thu lead, hỗ trợ chuyển đổi và tối ưu bằng dữ liệu.</p></div>
         </div>
-        <div class="about-grid">
-          <article class="panel about-copy reveal">
-            <p>Xin chào, tôi là <strong>Vũ Hồng Sơn</strong> — một Digital Marketer theo hướng full-stack.</p>
-            <p>Tôi quan tâm đến toàn bộ hành trình khách hàng: hiểu đúng nhu cầu, xây dựng thông điệp, lựa chọn kênh, tạo nội dung, thu hút lưu lượng, cải thiện chuyển đổi và đo lường hiệu quả.</p>
-            <p>Mục tiêu của tôi không chỉ là tạo ra lượt hiển thị, mà là biến marketing thành một hệ thống <strong>có thể vận hành, kiểm chứng và phát triển bền vững</strong>.</p>
+        <div class="positioning">
+          <article class="card position-copy reveal">
+            <h3>Một người có thể nhìn toàn cảnh và vẫn đi sâu vào triển khai.</h3>
+            <p>Tôi đã đi từ vị trí trực tiếp thực thi đến vai trò <strong>Full-stack Marketing Leader</strong>. Điều đó giúp tôi không chỉ giao việc, mà còn hiểu rõ cách Website, SEO, Content, Ads, Social, E-commerce và Sales phải kết nối để tạo ra kết quả.</p>
+            <p>Thế mạnh cốt lõi là khả năng xây hệ thống từ nền trắng: xác lập chiến lược, dựng tài sản số, tổ chức đội ngũ, triển khai đa kênh, thiết lập đo lường và đưa hoạt động marketing vào quy trình vận hành ổn định.</p>
           </article>
-          <div class="panel stack reveal" aria-label="Năng lực chuyên môn">
-            <div class="stack-item"><span class="stack-number">01</span><b>Strategy</b><small>Research & Planning</small></div>
-            <div class="stack-item"><span class="stack-number">02</span><b>SEO & Content</b><small>Organic Growth</small></div>
-            <div class="stack-item"><span class="stack-number">03</span><b>Paid Media</b><small>Performance Ads</small></div>
-            <div class="stack-item"><span class="stack-number">04</span><b>Analytics</b><small>Data & Optimization</small></div>
+          <div class="card principles reveal">
+            <div class="principle"><span>01</span><div><b>Business-first</b><p>Bắt đầu từ mục tiêu kinh doanh, không bắt đầu từ công cụ.</p></div></div>
+            <div class="principle"><span>02</span><div><b>Full-funnel</b><p>Kết nối nhận biết, quan tâm, lead, sales và chăm sóc khách hàng.</p></div></div>
+            <div class="principle"><span>03</span><div><b>Data-driven</b><p>Ra quyết định dựa trên dữ liệu, thử nghiệm và tín hiệu chuyển đổi.</p></div></div>
+            <div class="principle"><span>04</span><div><b>Hands-on Leadership</b><p>Dẫn dắt đội ngũ nhưng vẫn đủ chuyên môn để trực tiếp kiểm soát chất lượng.</p></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <section id="skills">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-index">02 / DỰ ÁN</span>
-          <div>
-            <h2>Những bài toán<br>tôi tập trung giải quyết.</h2>
-            <p class="section-intro">Ba nhóm dự án tiêu biểu trong hành trình xây dựng thương hiệu, thu hút khách hàng và tối ưu hiệu quả marketing.</p>
-          </div>
+          <span class="index">02 / NĂNG LỰC</span>
+          <div><h2>Năng lực chuyên môn bao phủ toàn bộ vòng đời marketing.</h2><p class="section-copy">Không sử dụng thanh phần trăm cảm tính. Mỗi nhóm kỹ năng được thể hiện bằng phạm vi công việc thực tế và kết quả đã tạo ra.</p></div>
         </div>
-        <div class="projects">
-          <article class="project-card reveal">
-            <div class="project-top"><span class="project-no">PROJECT 01</span><span class="project-arrow">↗</span></div>
-            <div class="project-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <h3>SEO & Content Growth</h3>
-            <p>Xây dựng cụm nội dung theo hành trình tìm kiếm, tối ưu nền tảng website và phát triển nguồn truy cập tự nhiên dài hạn.</p>
-            <div class="tags"><span class="tag">SEO</span><span class="tag">Content</span><span class="tag">Website</span></div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-top"><span class="project-no">PROJECT 02</span><span class="project-arrow">↗</span></div>
-            <div class="project-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <h3>Performance Marketing</h3>
-            <p>Thiết kế chiến dịch quảng cáo theo mục tiêu, theo dõi phễu chuyển đổi và tối ưu ngân sách dựa trên dữ liệu thực tế.</p>
-            <div class="tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">CRO</span></div>
-          </article>
-          <article class="project-card reveal">
-            <div class="project-top"><span class="project-no">PROJECT 03</span><span class="project-arrow">↗</span></div>
-            <div class="project-visual" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <h3>Omnichannel System</h3>
-            <p>Kết nối nội dung, mạng xã hội, quảng cáo và dữ liệu khách hàng thành một trải nghiệm nhất quán trên nhiều điểm chạm.</p>
-            <div class="tags"><span class="tag">Social</span><span class="tag">CRM</span><span class="tag">Automation</span></div>
-          </article>
+        <div class="skills-grid">
+          <article class="skill-card reveal"><span class="skill-code">STRATEGY / 01</span><h3>Strategy & Leadership</h3><p>Nghiên cứu, lập kế hoạch, thiết kế mục tiêu–KPI, phân bổ nguồn lực và quản lý đội ngũ đa chức năng.</p><div class="chips"><span class="chip">Marketing Planning</span><span class="chip">KPI Management</span><span class="chip">Team Leadership</span><span class="chip">Project Management</span></div></article>
+          <article class="skill-card reveal"><span class="skill-code">PERFORMANCE / 02</span><h3>Performance Marketing</h3><p>Hoạch định media, thiết lập chiến dịch, A/B testing, tối ưu chi phí và kiểm soát chất lượng lead.</p><div class="chips"><span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">CPL</span><span class="chip">CRO</span><span class="chip">Remarketing</span></div></article>
+          <article class="skill-card reveal"><span class="skill-code">SEARCH / 03</span><h3>SEO & AI Search</h3><p>Xây cấu trúc Website và nội dung theo Search Intent; tối ưu On-page, Technical SEO và khả năng xuất hiện trên AI Overview.</p><div class="chips"><span class="chip">Keyword Research</span><span class="chip">Technical SEO</span><span class="chip">Search Intent</span><span class="chip">AI Overview</span></div></article>
+          <article class="skill-card reveal"><span class="skill-code">OWNED / 04</span><h3>Website & Content System</h3><p>Xây Website, Landing Page và hệ thống nội dung đa định dạng xuyên suốt hành trình khách hàng.</p><div class="chips"><span class="chip">WordPress</span><span class="chip">Landing Page</span><span class="chip">Content Strategy</span><span class="chip">Social Content</span><span class="chip">Video</span></div></article>
+          <article class="skill-card reveal"><span class="skill-code">COMMERCE / 05</span><h3>E-commerce & Omnichannel</h3><p>Phát triển gian hàng, nội dung sản phẩm, quảng cáo nội sàn và kết nối Website–Social–Zalo–Shopee.</p><div class="chips"><span class="chip">Shopee</span><span class="chip">Shopee Ads</span><span class="chip">Zalo OA</span><span class="chip">Lead Management</span></div></article>
+          <article class="skill-card reveal"><span class="skill-code">DATA / 06</span><h3>Data, Analytics & AI</h3><p>Thiết lập đo lường, đọc dữ liệu đa nguồn, phân tích hành vi và đưa AI vào quy trình nghiên cứu–sản xuất nội dung.</p><div class="chips"><span class="chip">GA4</span><span class="chip">Search Console</span><span class="chip">Ads Manager</span><span class="chip">Data Analysis</span><span class="chip">AI Workflow</span></div></article>
         </div>
       </div>
     </section>
 
-    <section id="experience">
+    <section id="case-study">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-index">03 / KINH NGHIỆM</span>
-          <div>
-            <h2>Một quy trình.<br>Nhiều điểm chạm.</h2>
-            <p class="section-intro">Kinh nghiệm được xây dựng xuyên suốt ba lớp quan trọng của một hệ thống Digital Marketing full-stack.</p>
-          </div>
+          <span class="index">03 / CASE STUDY</span>
+          <div><h2>3D CORETECH: từ thương hiệu mới đến hệ thống online vận hành trơn tru.</h2><p class="section-copy">Case study trung tâm thể hiện đầy đủ khả năng xây thương hiệu, xây đội ngũ, trực tiếp triển khai chuyên môn và chịu trách nhiệm cho hiệu quả marketing.</p></div>
         </div>
-        <div class="experience-list">
-          <article class="experience-item reveal">
-            <span>STRATEGY / 01</span>
-            <h3>Nghiên cứu & hoạch định</h3>
-            <p>Phân tích thị trường, chân dung khách hàng, hành trình ra quyết định và xác định ưu tiên tăng trưởng.</p>
-          </article>
-          <article class="experience-item reveal">
-            <span>EXECUTION / 02</span>
-            <h3>Triển khai đa kênh</h3>
-            <p>Phối hợp SEO, content, social media, paid media và landing page trong một thông điệp nhất quán.</p>
-          </article>
-          <article class="experience-item reveal">
-            <span>OPTIMIZE / 03</span>
-            <h3>Đo lường & tối ưu</h3>
-            <p>Theo dõi các chỉ số quan trọng, tìm điểm nghẽn trong phễu và liên tục thử nghiệm để cải thiện hiệu quả.</p>
-          </article>
+        <article class="case reveal">
+          <div class="case-top">
+            <div class="company-block">
+              <a class="company-logo" href="https://3dcoretech.com.vn/" target="_blank" rel="noopener"><img src="assets/3d-coretech-logo-final.png" alt="Logo 3D CORETECH"></a>
+              <span class="role">05/2025–07/2026 · FULL-STACK MARKETING LEADER</span>
+            </div>
+            <div class="case-title">
+              <h3>Tôi tham gia khi thương hiệu vừa được tách ra và chưa có hệ thống marketing hoàn chỉnh.</h3>
+              <p>Phạm vi phụ trách gồm chiến lược, nhận diện online, Website, SEO, Content, Meta Ads, Google Ads, Social Media, TikTok, YouTube, Zalo OA, Shopee, Analytics, quản trị đội ngũ và quy trình lead–sales.</p>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="case-metrics">
+              <div class="case-metric"><b>1.000+</b><small>khách hàng liên hệ từ các chiến dịch Ads</small></div>
+              <div class="case-metric"><b>12–16%</b><small>tỷ lệ chốt deal trung bình từ kênh marketing</small></div>
+              <div class="case-metric"><b>49K</b><small>người dùng Website trong kỳ đo lường</small></div>
+              <div class="case-metric"><b>300+</b><small>từ khóa đạt Top 20 Google</small></div>
+              <div class="case-metric"><b>~100</b><small>từ khóa xuất hiện trên AI Overview</small></div>
+              <div class="case-metric"><b>334K</b><small>sự kiện được ghi nhận trên GA4</small></div>
+            </div>
+
+            <div class="journey">
+              <div class="journey-item"><span>01 / FOUNDATION</span><b>Xây nền tảng</b><p>Nghiên cứu thị trường, xác định nhóm sản phẩm–dịch vụ, xây thông điệp, mục tiêu và kế hoạch triển khai.</p></div>
+              <div class="journey-item"><span>02 / BUILD</span><b>Xây tài sản số</b><p>Xây Website từ đầu, cấu trúc SEO, hệ thống Content và hiện diện trên các nền tảng chính.</p></div>
+              <div class="journey-item"><span>03 / SCALE</span><b>Tăng trưởng đa kênh</b><p>Triển khai SEO, Meta Ads, Google Ads, Social, video và Shopee để mở rộng traffic và nguồn lead.</p></div>
+              <div class="journey-item"><span>04 / OPERATE</span><b>Chuẩn hóa vận hành</b><p>Thiết lập KPI, Analytics, báo cáo, phối hợp Sales và quy trình tiếp nhận–theo dõi–xử lý lead.</p></div>
+            </div>
+
+            <div class="evidence">
+              <a href="assets/3d-coretech-meta-ads.png" target="_blank"><img src="assets/3d-coretech-meta-ads.png" alt="Kết quả Meta Ads 3D CORETECH"><div class="evidence-caption"><b>Performance Marketing</b><small>Dữ liệu chiến dịch và cuộc trò chuyện từ Meta Ads</small></div></a>
+              <a href="assets/3d-coretech-ga4.png" target="_blank"><img src="assets/3d-coretech-ga4.png" alt="Google Analytics 3D CORETECH"><div class="evidence-caption"><b>Website Growth & Analytics</b><small>Traffic đa nguồn, hành vi người dùng và hệ thống đo lường GA4</small></div></a>
+            </div>
+
+            <div class="channels" aria-label="Các kênh 3D CORETECH">
+              <a href="https://3dcoretech.com.vn/" target="_blank" rel="noopener">Website ↗</a>
+              <a href="https://www.facebook.com/3DCoreTech" target="_blank" rel="noopener">Facebook ↗</a>
+              <a href="https://www.tiktok.com/@3d_coretech" target="_blank" rel="noopener">TikTok ↗</a>
+              <a href="https://www.youtube.com/@3d-coretech" target="_blank" rel="noopener">YouTube ↗</a>
+              <a href="https://shopee.vn/3dcoretech" target="_blank" rel="noopener">Shopee ↗</a>
+            </div>
+            <p class="confidential">* Portfolio chỉ công bố các dữ liệu được phép chia sẻ. Thông tin về doanh thu, khách hàng, ngân sách chi tiết và dữ liệu nội bộ khác được bảo mật theo quy định doanh nghiệp.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="career">
+      <div class="container">
+        <div class="career-head reveal"><span class="index">04 / KINH NGHIỆM</span><h2>Trải nghiệm đa ngành, tập trung vào năng lực tạo tăng trưởng.</h2><p class="section-copy">Từ SEO và Website đến Performance Marketing, dữ liệu và quản trị đội ngũ — mỗi giai đoạn đều bổ sung một lớp năng lực cho tư duy Full-stack.</p></div>
+        <div class="timeline">
+          <article class="job reveal"><time>05/2025–07/2026</time><h3>Marketing Team Leader · 3D CORETECH</h3><p>Quản lý 09 nhân sự (02 Content, 02 Media, 05 Sale Admin); xây KPI, phân công, kiểm soát tiến độ và báo cáo trực tiếp với CEO. Lập kế hoạch theo tháng và trực tiếp phụ trách Website, SEO, Facebook Ads, Google Ads, Social Media, Zalo OA, Shopee, Content–Media và quy trình lead.</p></article>
+          <article class="job reveal"><time>01/2025–04/2025</time><h3>Sales &amp; Digital Marketing Intern · Thiên An Phát</h3><p>Triển khai nội dung Facebook, TikTok và Website; nghiên cứu sản phẩm, đối thủ, khách hàng và từ khóa. Viết nội dung chuẩn SEO, sản xuất video ngắn, thiết kế hình ảnh cơ bản và tư vấn khách hàng online–offline.</p></article>
+          <article class="job reveal"><time>08/2024–11/2024</time><h3>Digital Marketing Intern · ASOFT</h3><p>Nghiên cứu từ khóa, Search Intent và xây kế hoạch nội dung SEO cho phần mềm doanh nghiệp. Viết Blog, triển khai SEO On-page/Off-page, lập kế hoạch TikTok và ứng dụng AI vào nghiên cứu–sản xuất nội dung.</p></article>
+          <article class="job reveal"><time>2022–2025</time><h3>Digital Marketing · FPT Polytechnic</h3><p>Tốt nghiệp loại giỏi, GPA 3.0/4.0. Được đào tạo về SEO, Content Marketing, Digital Ads, Social Media, E-commerce và Website; có chứng chỉ tối ưu Website chuẩn SEO và Trello trong Marketing.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="contact" id="contact">
       <div class="container">
         <div class="contact-card reveal">
-          <span class="section-index">04 / LIÊN HỆ</span>
-          <h2>Cùng biến một mục tiêu kinh doanh thành kế hoạch tăng trưởng rõ ràng.</h2>
-          <p>Bạn đang có một dự án, một thương hiệu hoặc một bài toán marketing cần góc nhìn mới? Hãy bắt đầu một cuộc trò chuyện.</p>
-          <div class="contact-links">
-            <a class="button button-primary" href="https://github.com/vuhongsonmkt-dot" target="_blank" rel="noreferrer">Kết nối qua GitHub <span aria-hidden="true">↗</span></a>
-            <a class="button button-secondary" href="https://www.vuhongsonmkt.site">vuhongsonmkt.site</a>
+          <span class="index">05 / LIÊN HỆ</span>
+          <h2>Cùng biến một mục tiêu kinh doanh thành hệ thống marketing có thể vận hành và tăng trưởng.</h2>
+          <p>Tôi sẵn sàng trao đổi về cơ hội nghề nghiệp, dự án marketing hoặc những bài toán cần góc nhìn Full-stack.</p>
+          <div class="actions">
+            <a class="button primary" href="mailto:vuhongsonmkt@gmail.com">vuhongsonmkt@gmail.com <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="tel:+84866397978">08 66 39 79 78</a>
+            <a class="button secondary" href="cv-vu-hong-son-marketing.pdf" download>Tải CV</a>
           </div>
         </div>
       </div>
@@ -506,41 +395,31 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© <span id="year"></span> Vũ Hồng Sơn.</span>
-      <span>Digital Marketing Full-stack · Việt Nam</span>
+      <span class="footer-brand"><img src="assets/sudan-vu-logo.png" alt=""><span>© <span id="year"></span> Vũ Hồng Sơn · SuDan Vũ</span></span>
+      <span>Full-stack Marketing Leader · Việt Nam</span>
     </div>
   </footer>
 
   <script>
     const header = document.querySelector('#header');
-    const menuButton = document.querySelector('.menu-button');
-    const navLinks = document.querySelector('#nav-links');
-
-    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 20);
+    const menu = document.querySelector('.menu');
+    const nav = document.querySelector('#nav-links');
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 18);
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
-
-    menuButton.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.textContent = isOpen ? '×' : '☰';
+    menu.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+      menu.textContent = open ? '×' : '☰';
     });
-
-    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-      menuButton.textContent = '☰';
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded', 'false');
+      menu.textContent = '☰';
     }));
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    }), { threshold: .1 });
     document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
     document.querySelector('#year').textContent = new Date().getFullYear();
   </script>
