@@ -24,7 +24,7 @@
       --cyan: #54d8ff;
       --gold: #ffc515;
       --radius: 24px;
-      --shadow: 0 28px 50px rgba(0, 0, 0, .32);
+      --shadow: 0 28px 80px rgba(0, 0, 0, .32);
       --container: 1180px;
     }
 
@@ -66,7 +66,7 @@
     .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); align-items: center; gap: clamp(44px, 6vw, 84px); }
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; color: var(--blue-2); font-size: .78rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
     .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--blue); }
-    h1 { max-width: 660px; margin-bottom: 26px; font-size: clamp(3.2rem, 6.2vw, 5.75rem); line-height: .98; letter-spacing: -.065em; }
+    h1 { max-width: 760px; margin-bottom: 26px; font-size: clamp(2.55rem, 4.4vw, 4.1rem); line-height: 1.09; letter-spacing: -.045em; }
     .gradient { color: transparent; background: linear-gradient(100deg, #f9fbff 4%, #82b2ff 56%, #50d9ff); -webkit-background-clip: text; background-clip: text; }
     .hero-copy { max-width: 700px; margin-bottom: 32px; color: var(--muted); font-size: clamp(1rem, 1.3vw, 1.13rem); }
     .hero-copy strong { color: white; font-weight: 720; }
@@ -92,10 +92,10 @@
     .proof-item b { display: block; margin-bottom: 3px; font-size: clamp(1.35rem, 2.4vw, 1.9rem); letter-spacing: -.04em; }
     .proof-item small { color: var(--muted); }
 
-    section { padding: clamp(82px, 9vw, 120px) 0; }
+    section { padding: clamp(56px, 5.8vw, 82px) 0; }
     .section-head { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 48px; align-items: start; margin-bottom: 50px; }
     .index { color: var(--blue-2); font: 850 .76rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; }
-    h2 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.35rem, 4.7vw, 4.25rem); line-height: 1.04; letter-spacing: -.055em; }
+    h2 { max-width: 900px; margin-bottom: 0; font-size: clamp(2.05rem, 3.7vw, 3.35rem); line-height: 1.08; letter-spacing: -.05em; }
     .section-copy { max-width: 760px; margin: 20px 0 0; color: var(--muted); font-size: 1rem; }
 
     .positioning { display: grid; grid-template-columns: .95fr 1.05fr; gap: 22px; }
@@ -125,7 +125,7 @@
     .company-logo { min-height: 136px; display: grid; place-items: center; padding: 22px 26px; border: 1px solid rgba(255,255,255,.7); border-radius: 22px; background: #edf1f4; }
     .company-logo img { width: 100%; max-width: 310px; height: auto; display: block; object-fit: contain; }
     .role { display: block; margin-top: 17px; color: var(--gold); font: 850 .75rem/1.6 ui-monospace, monospace; letter-spacing: .06em; }
-    .case-title h3 { margin-bottom: 18px; font-size: clamp(2rem, 4.2vw, 3.6rem); line-height: 1.04; letter-spacing: -.055em; }
+    .case-title h3 { margin-bottom: 18px; font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1.08; letter-spacing: -.05em; }
     .case-title p { margin: 0; color: var(--muted); }
     .case-body { padding: 0 clamp(28px, 5vw, 54px) clamp(32px, 5vw, 54px); }
     .case-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; margin-bottom: 28px; }
@@ -155,6 +155,8 @@
     .job time { color: var(--blue-2); font: 800 .75rem/1.5 ui-monospace, monospace; }
     .job h3 { margin: 0; font-size: 1.06rem; letter-spacing: -.02em; }
     .job p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .job-points { margin: 0; padding-left: 1.08rem; display: grid; gap: 8px; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+    .job-points li::marker { color: var(--blue-2); }
 
     .contact { padding-top: 72px; }
     .contact-card { padding: clamp(34px, 6vw, 72px); border: 1px solid rgba(106,167,255,.28); border-radius: 30px; background: linear-gradient(125deg, rgba(43,127,255,.17), rgba(9,18,34,.9) 56%); box-shadow: var(--shadow); }
@@ -171,11 +173,11 @@
 
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr .8fr; gap: 40px; }
-      h1 { font-size: clamp(3rem, 6.8vw, 5rem); }
+      h1 { font-size: clamp(2.45rem, 5vw, 3.7rem); }
       .skills-grid { grid-template-columns: repeat(2, 1fr); }
       .case-metrics, .journey { grid-template-columns: repeat(2, 1fr); }
       .job { grid-template-columns: 120px 1fr; }
-      .job p { grid-column: 2; }
+      .job p, .job-points { grid-column: 2; }
     }
 
     @media (max-width: 800px) {
@@ -200,8 +202,8 @@
       .container { width: calc(100% - 24px); }
       .brand span { font-size: .92rem; }
       .hero { padding-top: 108px; }
-      h1 { font-size: clamp(2.72rem, 13vw, 4rem); }
-      h2 { font-size: clamp(2rem, 10vw, 3rem); }
+      h1 { font-size: clamp(2.1rem, 9vw, 2.75rem); line-height: 1.08; }
+      h2 { font-size: clamp(1.75rem, 8.2vw, 2.4rem); }
       .hero-copy { font-size: .98rem; }
       .actions .button { width: 100%; }
       .portrait-info { left: 18px; right: 18px; bottom: 18px; align-items: flex-start; flex-direction: column; gap: 8px; }
@@ -213,7 +215,7 @@
       .case-top, .case-body { padding-left: 20px; padding-right: 20px; }
       .case-metric { min-height: 108px; }
       .job { grid-template-columns: 1fr; gap: 10px; }
-      .job p { grid-column: auto; }
+      .job p, .job-points { grid-column: auto; }
       .footer-inner { align-items: flex-start; flex-direction: column; }
     }
 
@@ -367,12 +369,64 @@
 
     <section id="career">
       <div class="container">
-        <div class="career-head reveal"><span class="index">04 / KINH NGHIỆM</span><h2>Trải nghiệm đa ngành, tập trung vào năng lực tạo tăng trưởng.</h2><p class="section-copy">Từ SEO và Website đến Performance Marketing, dữ liệu và quản trị đội ngũ — mỗi giai đoạn đều bổ sung một lớp năng lực cho tư duy Full-stack.</p></div>
+        <div class="career-head reveal"><span class="index">04 / KINH NGHIỆM</span><h2>Kinh nghiệm thực tế trong Marketing, Sales và vận hành kênh số.</h2><p class="section-copy">Nội dung được tóm lược trực tiếp từ CV, tập trung vào đúng vai trò, phạm vi phụ trách và các đầu việc tôi đã thực hiện.</p></div>
         <div class="timeline">
-          <article class="job reveal"><time>05/2025–07/2026</time><h3>Marketing Team Leader · 3D CORETECH</h3><p>Quản lý 09 nhân sự (02 Content, 02 Media, 05 Sale Admin); xây KPI, phân công, kiểm soát tiến độ và báo cáo trực tiếp với CEO. Lập kế hoạch theo tháng và trực tiếp phụ trách Website, SEO, Facebook Ads, Google Ads, Social Media, Zalo OA, Shopee, Content–Media và quy trình lead.</p></article>
-          <article class="job reveal"><time>01/2025–04/2025</time><h3>Sales &amp; Digital Marketing Intern · Thiên An Phát</h3><p>Triển khai nội dung Facebook, TikTok và Website; nghiên cứu sản phẩm, đối thủ, khách hàng và từ khóa. Viết nội dung chuẩn SEO, sản xuất video ngắn, thiết kế hình ảnh cơ bản và tư vấn khách hàng online–offline.</p></article>
-          <article class="job reveal"><time>08/2024–11/2024</time><h3>Digital Marketing Intern · ASOFT</h3><p>Nghiên cứu từ khóa, Search Intent và xây kế hoạch nội dung SEO cho phần mềm doanh nghiệp. Viết Blog, triển khai SEO On-page/Off-page, lập kế hoạch TikTok và ứng dụng AI vào nghiên cứu–sản xuất nội dung.</p></article>
-          <article class="job reveal"><time>2022–2025</time><h3>Digital Marketing · FPT Polytechnic</h3><p>Tốt nghiệp loại giỏi, GPA 3.0/4.0. Được đào tạo về SEO, Content Marketing, Digital Ads, Social Media, E-commerce và Website; có chứng chỉ tối ưu Website chuẩn SEO và Trello trong Marketing.</p></article>
+          <article class="job reveal">
+            <time>05/2025–07/2026</time>
+            <h3>Marketing Team Leader · Công ty TNHH TM DV 3D CORETECH</h3>
+            <ul class="job-points">
+              <li>Quản lý 09 nhân sự gồm 02 Content, 02 Media và 05 Sale Admin; xây dựng KPI, phân công công việc, kiểm soát tiến độ và báo cáo trực tiếp với CEO.</li>
+              <li>Xây dựng kế hoạch Marketing theo tháng; xác định sản phẩm trọng tâm, khách hàng mục tiêu, thông điệp, ngân sách và kênh triển khai.</li>
+              <li>Trực tiếp phụ trách Digital Marketing tổng thể gồm Website, SEO, Facebook Ads, Google Ads, Social Media, Zalo OA và Shopee.</li>
+              <li>Xây dựng website 3dcoretech.com.vn từ đầu; phát triển cấu trúc nội dung, danh mục sản phẩm và landing page hỗ trợ bán hàng.</li>
+              <li>Triển khai SEO tổng thể gồm Content, On-page, Technical, Off-page, Entity và Backlink; đưa hơn 300 từ khóa vào Top 20 Google và gần 100 từ khóa xuất hiện trên Google AI Overview.</li>
+              <li>Xây dựng định hướng Content và Media; kiểm duyệt bài viết, hình ảnh, video theo mục tiêu thương hiệu và chuyển đổi.</li>
+              <li>Thiết lập quy trình tiếp nhận, phân bổ và chăm sóc lead; theo dõi tốc độ phản hồi, chất lượng tư vấn và tỷ lệ chuyển đổi của Sale Admin.</li>
+              <li>Phát triển gian hàng Shopee và phối hợp cùng bộ phận Kỹ thuật, Kinh doanh, Vận hành triển khai chiến dịch theo từng sản phẩm, dịch vụ.</li>
+            </ul>
+          </article>
+          <article class="job reveal">
+            <time>01/2025–04/2025</time>
+            <h3>Sales &amp; Digital Marketing Intern · Công ty TNHH TM DV Thiên An Phát</h3>
+            <ul class="job-points">
+              <li>Triển khai nội dung cho Facebook, TikTok và Website; nghiên cứu sản phẩm, đối thủ và nhu cầu khách hàng.</li>
+              <li>Nghiên cứu từ khóa, viết và tối ưu nội dung Website chuẩn SEO; cập nhật hình ảnh và thông tin sản phẩm.</li>
+              <li>Lên ý tưởng, quay dựng video ngắn và thiết kế hình ảnh cơ bản phục vụ hoạt động truyền thông.</li>
+              <li>Tư vấn khách hàng online và offline; tổng hợp phản hồi để hỗ trợ cải thiện nội dung và hoạt động bán hàng.</li>
+            </ul>
+          </article>
+          <article class="job reveal">
+            <time>08/2024–11/2024</time>
+            <h3>Digital Marketing Intern · Công ty Cổ phần ASOFT</h3>
+            <ul class="job-points">
+              <li>Nghiên cứu từ khóa, Search Intent và xây dựng kế hoạch nội dung SEO trong lĩnh vực phần mềm doanh nghiệp.</li>
+              <li>Viết và tối ưu bài Blog; thực hiện SEO On-page, Off-page và cập nhật nội dung Website.</li>
+              <li>Xây dựng ý tưởng, outline và kế hoạch nội dung cho TikTok.</li>
+              <li>Ứng dụng AI trong nghiên cứu từ khóa, xây dựng outline và sản xuất nội dung.</li>
+            </ul>
+          </article>
+          <article class="job reveal">
+            <time>12/2023–06/2024</time>
+            <h3>Digital Marketing Junior · Công ty TNHH Tâm Digital</h3>
+            <ul class="job-points">
+              <li>Làm việc trong môi trường Agency, triển khai đồng thời 2–3 dự án Marketing Online trên nhiều nền tảng.</li>
+              <li>Phụ trách các đầu việc về Website, Fanpage, Facebook Ads, SEO, Social Content, video ngắn và tư vấn khách hàng online.</li>
+              <li>Lên ý tưởng, viết caption, bài bán hàng, nội dung truyền thông ưu đãi và nội dung hỗ trợ chuyển đổi.</li>
+              <li>Phân tích từ khóa, viết bài chuẩn SEO; hỗ trợ SEO On-page, Off-page và tối ưu nội dung Website theo từng nhóm sản phẩm, dịch vụ.</li>
+              <li>Hỗ trợ thiết lập, theo dõi và tối ưu Facebook Ads cho các chiến dịch bán hàng, mùa vụ; chăm sóc và tư vấn khách hàng qua các kênh online nhằm hỗ trợ tạo lead.</li>
+              <li>Quay dựng video ngắn, theo dõi tương tác, tin nhắn và phản hồi khách hàng để điều chỉnh nội dung và thông điệp triển khai.</li>
+            </ul>
+          </article>
+          <article class="job reveal">
+            <time>2022–2025</time>
+            <h3>Cao đẳng FPT Polytechnic</h3>
+            <ul class="job-points">
+              <li>Tốt nghiệp loại giỏi, GPA 3.0/4.0.</li>
+              <li>Được đào tạo về SEO, Content Marketing, Digital Ads, Social Media, thương mại điện tử và Website.</li>
+              <li>Có chứng chỉ tối ưu Website chuẩn SEO và ứng dụng Trello trong Marketing.</li>
+              <li>Thành viên hoạt động xuất sắc tại Câu lạc bộ Nghệ thuật.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
