@@ -1,0 +1,129 @@
+[
+  {
+    "path": "vendor/ffmpeg/index.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js",
+    "bytes": 30,
+    "sha256": "b08695fea8eff663c7e4ff4c28bd6e356aeb95e608f2a8a3f12fc1fe29d91123"
+  },
+  {
+    "path": "vendor/ffmpeg/classes.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/classes.js",
+    "bytes": 8698,
+    "sha256": "ac411e19c69cffcf2669aa9e56c90dc120d5f6ac89d7aafb0000fc7841376c70"
+  },
+  {
+    "path": "vendor/ffmpeg/const.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/const.js",
+    "bytes": 974,
+    "sha256": "e16b2532be2545bc9537dfbd3db834447462ad90aa201e4c5ca238fdc7a9df95"
+  },
+  {
+    "path": "vendor/ffmpeg/errors.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/errors.js",
+    "bytes": 332,
+    "sha256": "619310d7ef5fe5fefa0a31927db862b7c291713cfef4d71753fa8aafd18f4db6"
+  },
+  {
+    "path": "vendor/ffmpeg/types.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/types.js",
+    "bytes": 295,
+    "sha256": "72f80e6fd44fcd18b55c9a0deb3bc70b9bb37480cf969045ca4521f5a11300f5"
+  },
+  {
+    "path": "vendor/ffmpeg/utils.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/utils.js",
+    "bytes": 138,
+    "sha256": "8c2e0e16445f8d3a0acbb812f2c60541a92c88ed0bf9ffe96c52e7fb6c8b1d72"
+  },
+  {
+    "path": "vendor/ffmpeg/worker.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/worker.js",
+    "bytes": 4810,
+    "sha256": "b35bf79766eb53547655c5142ab90b50134f0b6de56ab5cdb2ae73d1e8aeaca5"
+  },
+  {
+    "path": "vendor/ffmpeg/ffmpeg-core.js",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js",
+    "bytes": 114494,
+    "sha256": "c972f5abeafcd5f3949e54edfbdc74a9badb27025809feb1945d468ffbcfb7f1"
+  },
+  {
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+    "bytes": 32129114,
+    "sha256": "2390efa7fb66e7e42dbae15427571a5ffc96b829480904c30f471f0a78967f61",
+    "storage": "Split byte-for-byte into the four files listed in vendor/ffmpeg/wasm-parts.json",
+    "originalPath": "vendor/ffmpeg/ffmpeg-core.wasm"
+  },
+  {
+    "path": "vendor/ffmpeg/ffmpeg-core.part1.wasm",
+    "derivedFrom": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+    "bytes": 8388608,
+    "sha256": "868a214596f3d498c1d862fab9468062e0510dcb75cadf7560a140db109bf4c8"
+  },
+  {
+    "path": "vendor/ffmpeg/ffmpeg-core.part2.wasm",
+    "derivedFrom": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+    "bytes": 8388608,
+    "sha256": "57074391888a77148e217be2caed9e7501fe508f84cd301692c5dec4d1212955"
+  },
+  {
+    "path": "vendor/ffmpeg/ffmpeg-core.part3.wasm",
+    "derivedFrom": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+    "bytes": 8388608,
+    "sha256": "87572136bdb4f073d04d4b85840050e5cac56f1d79743dc81745836c1c0f9f07"
+  },
+  {
+    "path": "vendor/ffmpeg/ffmpeg-core.part4.wasm",
+    "derivedFrom": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+    "bytes": 6963290,
+    "sha256": "a6dd6ee10cd132c96176fece83ad8bf18a4eb379da96d7dce2010742e87088b9"
+  },
+  {
+    "path": "vendor/transformers.min.js",
+    "url": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/transformers.min.js",
+    "bytes": 897938,
+    "sha256": "bcf7cf304e51f470ed59409622b9d6ffbad80dfcf5baf6a40c919e4b9c4ff812"
+  },
+  {
+    "path": "vendor/onnx/ort-wasm.wasm",
+    "url": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/ort-wasm.wasm",
+    "bytes": 9223228,
+    "sha256": "bbdcb6b3c7d294577d806077630460be4e13ca35a345acb5e81188e9649fa74a"
+  },
+  {
+    "path": "vendor/onnx/ort-wasm-simd.wasm",
+    "url": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/ort-wasm-simd.wasm",
+    "bytes": 10014674,
+    "sha256": "9bd07bababc65f53d061f457233eeae501be7ceb8a2adb9eef52d87fe776d865"
+  },
+  {
+    "path": "vendor/ffmpeg/LICENSE.wrapper",
+    "url": "https://raw.githubusercontent.com/ffmpegwasm/ffmpeg.wasm/v0.12.10/LICENSE",
+    "bytes": 1066,
+    "sha256": "3e123e29517d76504ffce77b3f8e2ccffd4712493f27694b0aba3e376676459f"
+  },
+  {
+    "path": "vendor/LICENSE.transformers",
+    "url": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/LICENSE",
+    "bytes": 11358,
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+  },
+  {
+    "path": "vendor/onnx/LICENSE",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.14.0/LICENSE",
+    "bytes": 1073,
+    "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+  },
+  {
+    "path": "vendor/ffmpeg/PACKAGE.core.json",
+    "url": "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/package.json",
+    "bytes": 930,
+    "sha256": "3f033e0c34bf81780777ebc7dbf378f0860a2dc18e96d2664270ff4adf59b33f"
+  },
+  {
+    "path": "vendor/ffmpeg/COPYING.GPLv2",
+    "url": "https://raw.githubusercontent.com/FFmpeg/FFmpeg/n5.1.4/COPYING.GPLv2",
+    "bytes": 18092,
+    "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+  }
+]

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="SuDan Video Studio: sửa phụ đề, nhận diện, dịch, tạo giọng Việt và xuất video ngay trong trình duyệt.">
+  <title>SuDan Studio · Video trong trình duyệt</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="SuDan Studio"><span class="brand-mark">S<span>▶</span></span><span>SuDan<span class="muted"> Studio</span></span><small>WEB 6.0</small></a>
+    <span class="privacy"><i></i> Xử lý trên thiết bị của bạn</span>
+    <div class="header-actions"><button id="helpBtn" class="quiet">Hướng dẫn</button><button id="saveProject" class="secondary">Lưu dự án ↓</button></div>
+  </header>
+  <main>
+    <section class="page-heading"><div><p class="eyebrow">KHÔNG GIAN SÁNG TẠO</p><h1>Video của bạn. Câu chuyện của bạn.</h1><p class="muted">Từ lời thoại đến phụ đề và giọng Việt — ngay trong trình duyệt.</p></div><span class="badge">GitHub Pages edition</span></section>
+    <section class="workspace">
+      <div class="preview-column">
+        <div class="card preview-card">
+          <div class="card-head"><h2><span class="dot"></span> Xem trước</h2><span id="mediaName" class="muted ellipsis">Chưa chọn video</span></div>
+          <div id="dropZone" class="stage" tabindex="0" role="button" aria-label="Chọn hoặc kéo thả video">
+            <video id="video" controls playsinline hidden></video>
+            <div id="subtitleOverlay" class="subtitle-overlay" aria-hidden="true"></div>
+            <div id="emptyMedia" class="empty-media"><div class="upload-symbol">↥</div><h3>Bắt đầu với một video</h3><p>Kéo thả vào đây hoặc chọn từ thiết bị</p><button id="chooseVideo" class="primary">＋ Chọn video</button><small>MP4, MOV, WebM · Khuyên dùng clip dưới 200 MB</small></div>
+          </div>
+          <div class="player-meta"><span id="mediaInfo">Video được giữ trên máy, không tải lên GitHub</span><button id="replaceVideo" class="quiet">Đổi video</button></div>
+        </div>
+        <div class="card timeline-card"><div class="card-head"><h2>Dòng thời gian</h2><span id="playhead" class="mono muted">00:00:00,000</span></div><div id="timeline" class="timeline" aria-label="Các câu phụ đề"><span class="muted">Phụ đề sẽ xuất hiện tại đây</span></div></div>
+        <div class="notice"><span>✦</span><p><b>Chạy trên web, không cần cài Python.</b><br>AI tải mô hình khi bạn bấm sử dụng. Nên dùng Chrome/Edge trên máy tính, bắt đầu với clip 30–60 giây.</p></div>
+      </div>
+      <div class="card tools-card">
+        <div class="tabs" role="tablist" aria-label="Công cụ"><button id="tabSubtitles" class="tab active" role="tab" aria-selected="true" aria-controls="panelSubtitles" data-panel="panelSubtitles">01 <span>Phụ đề</span></button><button id="tabVoice" class="tab" role="tab" aria-selected="false" aria-controls="panelVoice" data-panel="panelVoice">02 <span>Giọng Việt</span></button><button id="tabExport" class="tab" role="tab" aria-selected="false" aria-controls="panelExport" data-panel="panelExport">03 <span>Xuất file</span></button></div>
+        <section id="panelSubtitles" role="tabpanel" aria-labelledby="tabSubtitles" class="panel">
+          <div class="section-title"><h2>Lời thoại & bản dịch</h2><span id="cueCount" class="pill">0 câu</span></div>
+          <div class="import-row"><button id="importSource" class="secondary">↑ Nhập SRT/VTT gốc</button><button id="importVi" class="secondary">↑ Nhập bản Việt</button><button id="openProject" class="quiet">Mở dự án</button></div>
+          <div class="ai-box"><div class="field"><label for="language">Ngôn ngữ lời thoại</label><select id="language"><option value="zh">Tiếng Trung</option><option value="en">Tiếng Anh</option><option value="vi">Tiếng Việt</option></select></div><div class="row"><button id="transcribe" class="primary">✦ Nhận diện lời thoại</button><button id="translate" class="secondary">Dịch sang Việt</button></div><small>Whisper Tiny · NLLB · Tải mô hình lần đầu, xử lý tại thiết bị.<br>Dịch NLLB cần khoảng 900 MB tải xuống và có thể dùng vài GB RAM.</small></div>
+          <div class="editor-toolbar"><input id="search" type="search" placeholder="Tìm nội dung câu…" aria-label="Tìm phụ đề"><label class="checkbox"><input id="onlyFlags" type="checkbox"> Chỉ câu cần kiểm tra</label><button id="addCue" class="secondary" title="Thêm câu tại vị trí video hiện tại">＋ Câu</button></div>
+          <div id="cueList" class="cue-list"><div class="empty-cues"><span>≡</span><h3>Lời thoại bắt đầu ở đây</h3><p>Nhập phụ đề có sẵn hoặc dùng AI để nhận diện.</p><button id="loadDemo" class="quiet accent">Thử dữ liệu mẫu →</button></div></div>
+          <div class="editor-footer"><span id="reviewCount" class="muted">Chưa có phụ đề</span><span id="saveStatus" class="muted" role="status">Tự lưu văn bản trên thiết bị</span></div>
+          <details class="advanced"><summary>Chỉnh hàng loạt</summary><div class="row"><label>Độ lệch (giây)<input id="shiftValue" type="number" step="0.1" value="0"></label><button id="shiftBtn" class="secondary">Dịch mốc thời gian</button></div><div class="row"><input id="findValue" placeholder="Tìm trong bản Việt" aria-label="Nội dung cần thay"><input id="replaceValue" placeholder="Thay bằng" aria-label="Nội dung thay thế"><button id="replaceBtn" class="secondary">Thay tất cả</button></div><button id="clearCues" class="danger quiet">Xóa toàn bộ phụ đề</button></details>
+        </section>
+        <section id="panelVoice" role="tabpanel" aria-labelledby="tabVoice" class="panel" hidden>
+          <div class="section-title"><h2>Lồng tiếng Việt</h2><span class="pill">Tại thiết bị</span></div>
+          <p class="muted">Tạo giọng từ cột Tiếng Việt, hoặc nhập bản thu âm của bạn để ghép vào video.</p>
+          <div class="voice-option"><div class="voice-icon">♫</div><div><h3>MMS · Tiếng Việt</h3><p class="muted">Một giọng tổng hợp · Mô hình tải lần đầu khoảng 40 MB</p></div></div>
+          <p class="hint">Giọng được căn theo từng câu. Câu quá dài sẽ tăng tốc tối đa 2× rồi cắt tại mốc kết thúc. Hãy nghe và sửa câu trước khi xuất.</p>
+          <button id="generateVoice" class="primary wide">✦ Tạo bản lồng tiếng WAV</button>
+          <div class="divider"><span>hoặc dùng bản thu có sẵn</span></div><button id="importAudio" class="secondary wide">↑ Chọn âm thanh lồng tiếng</button><p class="hint">WAV/MP3/M4A · Bắt đầu tại giây 0 của video</p>
+          <div id="voiceResult" class="audio-result" hidden><b id="voiceLabel">Bản lồng tiếng</b><audio id="voiceAudio" controls></audio><div class="row"><button id="downloadVoice" class="secondary">Tải âm thanh ↓</button><button id="removeVoice" class="quiet danger">Bỏ bản thu</button></div></div>
+          <div class="field"><label for="originalVolume">Âm lượng tiếng gốc <output id="volumeLabel">20%</output></label><input id="originalVolume" type="range" min="0" max="100" value="20"><small>Áp dụng khi xuất video có lồng tiếng.</small></div>
+          <details class="advanced"><summary>Nghe thử bằng giọng của trình duyệt</summary><p class="hint">Chỉ dùng để nghe thử văn bản; không dùng giọng này để xuất WAV.</p><select id="browserVoice" aria-label="Giọng trình duyệt"></select><textarea id="speechText" rows="2">Xin chào, đây là SuDan Video Studio.</textarea><div class="row"><button id="speak" class="secondary">▶ Nghe thử</button><button id="stopSpeech" class="quiet">Dừng</button></div></details>
+        </section>
+        <section id="panelExport" role="tabpanel" aria-labelledby="tabExport" class="panel" hidden>
+          <div class="section-title"><h2>Hoàn thiện & xuất file</h2><span class="pill">MP4 / SRT</span></div>
+          <div class="settings-grid"><div class="field"><label for="subtitleMode">Nội dung phụ đề</label><select id="subtitleMode"><option value="vi">Tiếng Việt</option><option value="source">Nguyên văn</option><option value="bilingual">Song ngữ</option><option value="none">Không phụ đề</option></select></div><div class="field"><label for="subtitlePosition">Vị trí</label><select id="subtitlePosition"><option value="bottom">Dưới</option><option value="top">Trên</option></select></div><div class="field"><label for="fontSize">Cỡ chữ (khung 720p)</label><input id="fontSize" type="number" min="16" max="80" value="38"></div><div class="field"><label for="fontColor">Màu chữ</label><input id="fontColor" type="color" value="#ffffff"></div></div>
+          <div class="field"><label for="exportSize">Độ phân giải xuất MP4</label><select id="exportSize"><option value="720">Tối đa 720p · Khuyên dùng</option><option value="480">Tối đa 480p · Nhẹ hơn</option><option value="original">Giữ kích thước · Tốn RAM hơn</option></select></div>
+          <label class="checkbox export-check"><input id="burnSubtitles" type="checkbox" checked> Gắn cứng phụ đề vào hình</label>
+          <p class="hint">Bỏ chọn để nhúng phụ đề mềm vào MP4. Định dạng MP4 H.264/AAC. Giữ tab mở khi xuất; quá trình có thể chậm hơn thời lượng video.</p>
+          <button id="renderVideo" class="primary wide">↓ Xuất video MP4</button>
+          <div id="renderResult" class="audio-result" hidden><b>Video đã sẵn sàng</b><video id="outputVideo" controls playsinline></video><a id="downloadVideo" class="primary download" download="sudan-video.mp4">Tải video MP4 ↓</a></div>
+          <div class="divider"><span>xuất phụ đề & kiểm dịch</span></div><div class="export-buttons"><button id="exportSrt" class="secondary">SRT ↓</button><button id="exportVtt" class="secondary">VTT ↓</button><button id="exportAss" class="secondary">ASS ↓</button><button id="exportCsv" class="secondary">Bảng kiểm dịch CSV ↓</button></div>
+          <p class="hint">Các dấu kiểm chỉ gợi ý câu đáng xem lại, không bảo đảm bản dịch chính xác. Chọn “Nguyên văn” nếu chưa có bản Việt.</p>
+        </section>
+      </div>
+    </section>
+    <footer><span>SuDan Video Studio · GitHub Pages</span><div><button id="logsBtn" class="quiet">Nhật ký xử lý</button><button id="resetProject" class="quiet">Dự án mới</button></div></footer>
+  </main>
+  <aside id="jobBox" class="job-box" hidden aria-live="polite"><div><b id="jobTitle">Đang xử lý</b><button id="cancelJob" class="secondary">Dừng</button></div><p id="jobMessage"></p><progress id="jobProgress" max="100"></progress><small>Giữ tab mở. Dừng dịch sẽ giữ các câu đã dịch.</small></aside>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="helpDialog"><div class="dialog-head"><h2>Dùng SuDan trên GitHub Pages</h2><button class="close-dialog quiet" aria-label="Đóng">✕</button></div><ol><li>Chọn video ngắn để thử. Video được đọc trực tiếp từ máy.</li><li>Nhập SRT/VTT hoặc chọn đúng ngôn ngữ và bấm <b>Nhận diện lời thoại</b>.</li><li>Dịch sang Việt, đọc và sửa từng câu. Bấm mốc thời gian để nghe lại.</li><li>Sang <b>Giọng Việt</b> để tạo WAV hoặc nhập bản thu.</li><li>Sang <b>Xuất file</b> để tải phụ đề hoặc MP4 có phụ đề và lồng tiếng.</li></ol><p>AI chạy trên CPU bằng WebAssembly. Lần đầu cần Internet để tải mô hình từ Hugging Face; trình duyệt có thể lưu cache. Máy yếu hoặc điện thoại có thể không đủ RAM cho NLLB.</p><p>Dự án tự lưu văn bản, mốc thời gian và kiểu chữ trên trình duyệt này. Video và âm thanh cần chọn lại sau khi tải trang. Hãy tải JSON để có bản sao dự phòng.</p><p>Đây là bản web viết lại: chưa hỗ trợ ghép nhiều tập, tăng tốc NVIDIA, xóa logo hay các giọng Edge của bản Windows. NLLB/MMS dùng giấy phép phi thương mại; xem README và THIRD_PARTY.md.</p><a href="./README.md" target="_blank" rel="noopener">Hướng dẫn triển khai GitHub Pages ↗</a></dialog>
+  <dialog id="logsDialog"><div class="dialog-head"><h2>Nhật ký xử lý</h2><button class="close-dialog quiet" aria-label="Đóng">✕</button></div><pre id="logs"></pre></dialog>
+  <input id="videoFile" type="file" accept="video/*,.mkv" hidden><input id="subtitleFile" type="file" accept=".srt,.vtt" hidden><input id="projectFile" type="file" accept=".json" hidden><input id="audioFile" type="file" accept="audio/*" hidden>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

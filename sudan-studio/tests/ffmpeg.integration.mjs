@@ -1,0 +1,33 @@
+import fs from 'node:fs/promises';
+import createFFmpegCore from '../vendor/ffmpeg/ffmpeg-core.js';
+import {toAss,toSrt} from '../lib/subtitles.js';
+import {wavBytes} from '../lib/audio.js';
+const {mkdtemp}=fs;
+const {tmpdir}=await import('node:os');
+const {join}=await import('node:path');
+const outputDir=await mkdtemp(join(tmpdir(),'sudan-media-test-'));
+const root=new URL('../',import.meta.url);
+const manifest=JSON.parse(await fs.readFile(new URL('vendor/ffmpeg/wasm-parts.json',root),'utf8'));
+const wasmBinary=Buffer.concat(await Promise.all(manifest.map(p=>fs.readFile(new URL('vendor/ffmpeg/'+p,root)))));
+const core=await createFFmpegCore({wasmBinary});
+let logs=[];core.setLogger(({message})=>logs.push(message));
+function exec(args){core.reset();const result=core.exec(...args);if(result!==0)throw Error('FFmpeg '+result+'\n'+logs.slice(-20).join('\n'));}
+const cues=[{start:0,end:1.5,source:'Hello',vi:'Xin chào Việt Nam'},{start:1.6,end:3,source:'Subtitle test',vi:'Kiểm tra phụ đề tiếng Việt'}];
+exec(['-f','lavfi','-i','color=c=0x302345:s=320x180:r=15:d=3','-f','lavfi','-i','sine=frequency=440:duration=3','-shortest','-c:v','libx264','-pix_fmt','yuv420p','-c:a','aac','input.mp4']);
+core.FS.writeFile('subtitles.ass',new TextEncoder().encode(toAss(cues)));
+core.FS.writeFile('subtitles.srt',new TextEncoder().encode(toSrt(cues)));
+core.FS.writeFile('DejaVuSans.ttf',await fs.readFile(new URL('assets/DejaVuSans.ttf',root)));
+const audio=Float32Array.from({length:16000*2},(_,i)=>Math.sin(2*Math.PI*i*660/16000)*.1);
+core.FS.writeFile('cue.wav',wavBytes(audio));
+exec(['-i','cue.wav','-af','atempo=1.33333,apad,atrim=duration=1.5','-ar','16000','-ac','1','-f','s16le','cue.pcm']);
+const pcm=core.FS.readFile('cue.pcm');
+if(Math.abs(pcm.length-48000)>100)throw Error('Audio alignment length mismatch '+pcm.length);
+exec(['-i','input.mp4','-i','cue.wav','-filter_complex','[0:a:0]volume=0.2[original];[1:a:0]apad[dub];[original][dub]amix=inputs=2:duration=longest:normalize=0,alimiter=limit=0.95[mix]','-map','0:v:0','-map','[mix]','-vf',"scale=w='min(iw,1280)':h='min(ih,720)':force_original_aspect_ratio=decrease:force_divisible_by=2,ass=subtitles.ass:fontsdir=.",'-c:v','libx264','-preset','ultrafast','-crf','24','-pix_fmt','yuv420p','-c:a','aac','-t','3','-threads','1','-movflags','+faststart','burned.mp4']);
+exec(['-i','input.mp4','-i','subtitles.srt','-map','0:v:0','-map','0:a:0?','-map','1:0','-c:s','mov_text','-metadata:s:s:0','language=vie','-vf',"scale=w='min(iw,1280)':h='min(ih,720)':force_original_aspect_ratio=decrease:force_divisible_by=2",'-c:v','libx264','-preset','ultrafast','-crf','24','-pix_fmt','yuv420p','-c:a','aac','-t','3','-threads','1','-movflags','+faststart','soft.mp4']);
+exec(['-i','input.mp4','-an','-c:v','copy','silent.mp4']);
+exec(['-i','silent.mp4','-i','cue.wav','-map','0:v:0','-map','1:a:0','-af','apad','-vf','scale=trunc(iw/2)*2:trunc(ih/2)*2','-c:v','libx264','-preset','ultrafast','-c:a','aac','-t','3','-threads','1','silent-dub.mp4']);
+for(const name of ['input.mp4','burned.mp4','soft.mp4','silent-dub.mp4'])await fs.writeFile(join(outputDir,name),core.FS.readFile(name));
+console.log('PASS: actual bundled single-thread FFmpeg WASM; video with hard Vietnamese subs and mixed audio, soft subs, silent video + dub, audio tempo alignment');
+console.log(logs.filter(l=>l.includes('fontselect')).join('\n'));
+
+console.log("Test media written to",outputDir);
